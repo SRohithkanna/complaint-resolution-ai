@@ -1,9 +1,17 @@
-
+# Python virtual environments
 venv/
 .venv/
+
+# Python cache
 __pycache__/
 *.py[cod]
+
+# Environment secrets
 .env
+
+# Test cache
 .pytest_cache/
+
+# Uploaded files
 uploads/*
 !uploads/.gitkeep
