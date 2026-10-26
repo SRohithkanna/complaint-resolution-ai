@@ -63,7 +63,10 @@ def next_complaint_id() -> int:
     return done + 1
 
 def save_complaint(record: dict) -> None:
-    record = {**record, "complaint_id": next_complaint_id(), "evidence_count": len(record["evidence"])}
+    if record.get("complaint_id") is None:
+        record["complaint_id"] = next_complaint_id()
+
+    record["evidence_count"] = len(record["evidence"])
     os.makedirs(config.UPLOAD_DIR, exist_ok=True)
     path = os.path.join(config.UPLOAD_DIR, record["complaint_code"], "complaint.json")
     os.makedirs(os.path.dirname(path), exist_ok=True)
